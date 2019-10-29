@@ -1,5 +1,5 @@
 //获取分页连接的URL .并进行加载
- $('.page-link').off("click");
+ //$('.page-link').off("click");
 $(function(){
       $('.page-link').click(function (e) {
       	  //获取点击的的url

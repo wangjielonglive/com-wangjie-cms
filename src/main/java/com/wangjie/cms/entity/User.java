@@ -2,9 +2,17 @@ package com.wangjie.cms.entity;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 public class User {
 	private int id;
+	@NotEmpty(message="用户名不能为空")
+	@Length(min=4,max=12,message="用户名不合法")
 	private String username;
+	@NotEmpty(message="密码不能为空")
+	@Length(min=3,max=9,message="密码名不合法")
 	private String password;
 	private String nickname;
 	private Date birthday;
@@ -15,21 +23,20 @@ public class User {
 	private String url;
 	private int score;
 	private int role;
-	public User(int id, String username, String password, String nickname,
-			Date birthday, int gender, int locked, Date create_time,
-			Date update_time, String url, int score, int role) {
+	
+	private String head_picture;
+	
+
+	public String getHead_picture() {
+		return head_picture;
+	}
+	public void setHead_picture(String head_picture) {
+		this.head_picture = head_picture;
+	}
+	public User(String username, String password, int role) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.nickname = nickname;
-		this.birthday = birthday;
-		this.gender = gender;
-		this.locked = locked;
-		this.create_time = create_time;
-		this.update_time = update_time;
-		this.url = url;
-		this.score = score;
 		this.role = role;
 	}
 	public int getId() {
@@ -117,6 +124,87 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((birthday == null) ? 0 : birthday.hashCode());
+		result = prime * result
+				+ ((create_time == null) ? 0 : create_time.hashCode());
+		result = prime * result + gender;
+		result = prime * result + id;
+		result = prime * result + locked;
+		result = prime * result
+				+ ((nickname == null) ? 0 : nickname.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + role;
+		result = prime * result + score;
+		result = prime * result
+				+ ((update_time == null) ? 0 : update_time.hashCode());
+		result = prime * result + ((url == null) ? 0 : url.hashCode());
+		result = prime * result
+				+ ((username == null) ? 0 : username.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (birthday == null) {
+			if (other.birthday != null)
+				return false;
+		} else if (!birthday.equals(other.birthday))
+			return false;
+		if (create_time == null) {
+			if (other.create_time != null)
+				return false;
+		} else if (!create_time.equals(other.create_time))
+			return false;
+		if (gender != other.gender)
+			return false;
+		if (id != other.id)
+			return false;
+		if (locked != other.locked)
+			return false;
+		if (nickname == null) {
+			if (other.nickname != null)
+				return false;
+		} else if (!nickname.equals(other.nickname))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (role != other.role)
+			return false;
+		if (score != other.score)
+			return false;
+		if (update_time == null) {
+			if (other.update_time != null)
+				return false;
+		} else if (!update_time.equals(other.update_time))
+			return false;
+		if (url == null) {
+			if (other.url != null)
+				return false;
+		} else if (!url.equals(other.url))
+			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
+		return true;
+	}
+	
 	
 	
 }

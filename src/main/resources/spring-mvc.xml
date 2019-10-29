@@ -19,6 +19,34 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
+	<!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<mvc:exclude-mapping path="/resource/**"/>
+			<mvc:exclude-mapping path="/article/comment"/>
+			<mvc:exclude-mapping path="/article/getclist"/>
+			<mvc:exclude-mapping path="/html/**"/>
+			<mvc:exclude-mapping path="/search/**"/>
+			<mvc:exclude-mapping path="/"/>
+			<mvc:exclude-mapping path="/article/addHits"/>
+			<mvc:exclude-mapping path="/index"/>
+			<mvc:exclude-mapping path="/pic/**"/>
+			<mvc:exclude-mapping path="/article/show"/>
+			<mvc:exclude-mapping path="/user/login"/>
+			<mvc:exclude-mapping path="/user/register"/>
+			<mvc:exclude-mapping path="/user/checkExist"/>
+			<bean class="com.wangjie.cms.intercepter.AuthIntercepter"></bean>
+		</mvc:interceptor>
+		
+	</mvc:interceptors>
+	
+	<!-- 上传下载配置 -->	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="maxUploadSize" value="10485760000"></property>
+	</bean>
+	
 	<!-- <bean class=""></bean> -->
 	<!-- 不拦截静态资源 -->
 	<mvc:default-servlet-handler />
