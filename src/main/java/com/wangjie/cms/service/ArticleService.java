@@ -107,4 +107,11 @@ public interface  ArticleService {
 
 	PageInfo<Comment> getCommentByUserId(int id, Integer page);
 	
+	
+	
+	void addFromKafka(Article article);
+
+
+	PageInfo<Article> esList(Integer page, String key);
+	
 }

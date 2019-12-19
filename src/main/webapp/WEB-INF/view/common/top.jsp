@@ -4,9 +4,9 @@
   <a class="navbar-brand" href="/" title="CMS"><img alt="CMS" src="/resource/images/logo.png"></a>
   
   <!-- 搜索框：在专业高级二学完ElasticSearch后实现 -->
-  <form class="form-inline" action="/search">
+  <form class="form-inline" action="/">
     <div class="input-group">
-      <input type="text" name="title" class="form-control" placeholder="输入关键字..." aria-label="key" aria-describedby="basic-addon1">
+      <input type="text" name="key" value="${key}" class="form-control" placeholder="输入关键字..." aria-label="key" aria-describedby="basic-addon1">
       <div class="input-group-prepend">
         <button class="input-group-btn btn btn-outline-primary" id="basic-addon1">搜索</button>
       </div>

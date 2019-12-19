@@ -51,14 +51,6 @@ public class SpecialController {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	@RequestMapping(value="update",method=RequestMethod.GET)
 	public String update(HttpServletRequest request,Integer id) {
 		Special special = specialService.findById(id);
@@ -114,4 +106,8 @@ public class SpecialController {
 		request.setAttribute("special", special);
 		return "admin/special/detail";
 	}	
+	
+	
+	
+	
 }

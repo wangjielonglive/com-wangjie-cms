@@ -70,6 +70,7 @@ String htmlData = request.getParameter("content1") != null ? request.getParamete
 				<input name="tags" size="50"/>
 		</div>
 		
+		
 		<div class="form-group row" >
 		<button type="button" class="btn btn-success" onclick="publish()">发布</button>
 		

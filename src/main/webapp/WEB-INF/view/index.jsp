@@ -9,13 +9,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+
 <title>CMS系统</title>
+<meta name="keywords" content="谷歌,卫星,地图,军事基地">
+<meta name="description" content="借助卫星图像,看国外">
 
 <!-- Bootstrap -->
 <link rel="stylesheet"
-	href="/resource/css/bootstrap.min.css">
+	href="${pageContext.request.contextPath}/resource/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
-	href="/resource/css/cms.css?v=1.1" />
+	href="${pageContext.request.contextPath}/resource/css/cms.css?v=1.1" />
 <style type="text/css">
 </style>
 </head>
@@ -51,17 +54,34 @@
 							<li data-target="#carousel" data-slide-to="0" class="active"></li>
 							<li data-target="#carousel" data-slide-to="1"></li>
 							<li data-target="#carousel" data-slide-to="2"></li>
+							<li data-target="#carousel" data-slide-to="3"></li>
+							<li data-target="#carousel" data-slide-to="4"></li>
+							<li data-target="#carousel" data-slide-to="5"></li>
+							<li data-target="#carousel" data-slide-to="6"></li>
 						</ol>
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img class="d-block w-100" src="/pic/3f293225-1764-4cd0-ada1-0b55bba7b5c8.jpg" alt="First slide">
+								<img class="d-block w-100" src="/pic/mmexport1574314627260.jpg" alt="First slide">
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/pic/2.jpg" alt="Second slide">
+								<img class="d-block w-100" src="/pic/mmexport1574314548427.jpg" alt="Second slide">
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/pic/3.jpg" alt="Third slide">
+								<img class="d-block w-100" src="/pic/mmexport1574314433566.jpg" alt="Third slide">
 							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="/pic/mmexport1574314445382.jpg" alt="Fourth slide">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="/pic/57b28699235ca.jpg" alt="Fifth slide">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="/pic/mmexport1574314409988.jpg" alt="Sixth slide">
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="/pic/34d5026b-1a39-40c0-b4bc-06de60544aab.jpg" alt="seventh slide">
+							</div>
+							
 						</div>
 						<a class="carousel-control-prev" href="#carousel" role="button"
 							data-slide="prev"> <span class="carousel-control-prev-icon"
@@ -121,10 +141,13 @@
 							</c:forEach>
 						</ol>
 					</div>
+					
 				</div>
+				<br>
 			   <div class="card">
-			   
+			  
 			   <div class="card-header">友情链接</div>
+			    
 			      <ol>
 			    <c:forEach items="${linklist}" var="l">
 			      <li class="text-truncate text-center"><a href="${l.http }" target="_blank">${l.name}</a></li>
@@ -132,7 +155,7 @@
 			    </c:forEach>
 			     </ol>
 			   </div>
-			   
+			   	<br>
 				 <div class="card">专题文章</div>
 			   <c:forEach items="${specials}" var="special">
 					   	<div class="card">

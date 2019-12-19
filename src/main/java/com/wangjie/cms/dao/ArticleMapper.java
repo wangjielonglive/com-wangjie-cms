@@ -161,4 +161,6 @@ public interface ArticleMapper {
 			+ " LEFT JOIN cms_user u ON u.id=c.userId "
 			+ " WHERE c.userId=#{value} ORDER BY id desc")
 	List<Comment> getCommnentByUserId(int id);
+
+	void addFromKafka(Article article);
 }

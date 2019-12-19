@@ -44,7 +44,7 @@ function del(id) {
 			<dt><a href="javascript:myopen(${article.id })">${article.title }</a></dt>
 			<dd>作者:${article.user.username} 发布时间:
 			  <fmt:formatDate value="${article.created}"/>
-				频道:${article.channel.name}  分类:${article.cat.name}
+				频道:${article.channel.name} 分类:${article.cat.name}
 			    <a href="javascript:toUpdate(${article.id })">修改</a>
 			    <a href="javascript:del(${article.id })">删除</a>
 			</dd>

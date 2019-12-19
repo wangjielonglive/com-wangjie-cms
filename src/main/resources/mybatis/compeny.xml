@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangjie.cms.dao.CompanyMapper">
+	 <select id="clist" resultType="com.wangjie.cms.entity.Company">
+	 	select * from cms_company
+	 </select>
+	 
+	 <insert id="add">
+	 insert into cms_company name(id,description,companyName,mainBusinessProducts,address,registeredCapital,foundingTime,annualCheckDate,annualCheckStatus) 
+	 values(id,#{description },#{companyName },#{mainBusinessProducts },#{address },#{registeredCapital },#{foundingTime },#{annualCheckDate },#{annualCheckStatus },#{rmk})
+	 </insert>
+</mapper>

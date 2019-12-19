@@ -14,6 +14,7 @@ public class Cat implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -5865518773522383266L;
+	
 	private Integer id;
 	private String  name;
 	private Integer  channelId;

@@ -9,10 +9,10 @@
 <div class="container">
 <form action="" id="spform">
 		<input type="hidden" value="${special.id}" name="id">
-		<label>标题</label>
+		<label>文章标题</label>
 		<input name="title" id="title" value="${special.title}"/>
 		<br/>
-		<label>摘要</label>
+		<label>文章摘要</label>
 		<textarea rows="10" cols="100" name="digest" id="digest">
 			${special.digest}
 		</textarea>

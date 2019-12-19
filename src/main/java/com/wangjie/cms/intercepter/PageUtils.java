@@ -104,5 +104,12 @@ public final class PageUtils {
 		}
 		request.setAttribute("page", "共有"+listCount+"条数据"+" 当前为第"+page+"页 &nbsp;"+first+" "+prev+" "+next+" "+last);
 	}
-	
+
+
+	public static void pages(HttpServletRequest request, String url,
+			String string, String string2, String string3, String string4) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

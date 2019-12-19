@@ -165,14 +165,21 @@ public class ArticleController {
 	@RequestMapping(value = "update",method=RequestMethod.GET)
 	public String update(HttpServletRequest request,Integer id) {
 		
-		List<Channel> allChnls = chanService.getAllChnls();
+		//List<Channel> allChnls = chanService.getAllChnls();
 		Article article = articleService.findById(id);
 		
 		request.setAttribute("article", article);
 		request.setAttribute("content1", article.getContent());
-		request.setAttribute("channels", allChnls);
+		//request.setAttribute("channels", allChnls);
 		return "my/update";
 		
+	}
+	
+	@RequestMapping("getAllChn")
+	@ResponseBody
+	public List<Channel> getAllChn() {
+		List<Channel> allChnls = chanService.getAllChnls();
+		return allChnls;
 	}
 	
 	/**
@@ -196,7 +203,7 @@ public class ArticleController {
 		String originName = file.getOriginalFilename();
 		String suffixName = originName.substring(originName.lastIndexOf('.'));
 		SimpleDateFormat sdf=  new SimpleDateFormat("yyyyMMdd");
-		String path = "d:/pic/" + sdf.format(new Date());
+		String path = "/opt/pic/" + sdf.format(new Date());
 		File pathFile = new File(path);
 		if(!pathFile.exists()) {
 			pathFile.mkdir();
@@ -228,7 +235,7 @@ public class ArticleController {
 		String originName = file.getOriginalFilename();
 		String suffixName = originName.substring(originName.lastIndexOf('.'));
 		SimpleDateFormat sdf=  new SimpleDateFormat("yyyyMMdd");
-		String path = "d:/pic/" + sdf.format(new Date());
+		String path = "/opt/pic/" + sdf.format(new Date());
 		File pathFile = new File(path);
 		if(!pathFile.exists()) {
 			pathFile.mkdir();

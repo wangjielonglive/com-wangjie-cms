@@ -1,12 +1,13 @@
 package com.wangjie.cms.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
-public class User {
+public class User implements Serializable{
 	private int id;
 	@NotEmpty(message="用户名不能为空")
 	@Length(min=4,max=12,message="用户名不合法")

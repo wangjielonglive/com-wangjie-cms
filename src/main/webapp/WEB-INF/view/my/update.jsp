@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%
 	request.setCharacterEncoding("UTF-8");
 	String htmlData = request.getAttribute("content1") != null ? (String)request.getAttribute("content1") : "";
@@ -55,15 +56,20 @@
 		<div class="form-group row ">
 		  	<label for="channel">文章栏目</label> 
 			<select class="custom-select custom-select-sm mb-3" id="channel"  name="channelId">
-			  <option></option>
+			  <option value="0">请选择</option>
+			  <c:forEach items="${channels}" var="channel">
+			  		<option value="${channel.id}">${channel.name}</option>
+			  </c:forEach>
 			</select>
 			<label for="category">文章分类</label> 
-			<select class="custom-select custom-select-sm mb-3" id="category" name="categoryId">
+			<select class="custom-select custom-select-sm mb-3" id="category" name="categoryId" >
 			</select>
 			
 			<label for="category">文章标签</label> 
 				<input name="tags" size="50" value="${article.tags}"/>
+			<br>	
 		</div>
+		
 		
 		<div class="form-group row" >
 		<button type="button" class="btn btn-success" onclick="publish()" >修改</button>
@@ -141,11 +147,11 @@ $(function(){
 					// 频道的回显
 					 $("#category").empty();
 						//根据ID 获取栏目下的分类
-					 $.get("/article/getCatsByChn",{channelId:${article.channelId}},function(catlist){
-						
+					 $.get("/article/listCatByChnl",{chnlId:${article.channelId}},function(obj){
+						 var catlist = obj.data;
 						 for(var cati in catlist){
-						  	 if(catlist[cati].id==${article.categoryId}){
-								 $("#category").append("<option selected value='"+catlist[cati].id+"'>"+catlist[cati].name+"</option>")
+						  	 if(catlist[cati].id == ${article.categoryId}){
+								 $("#category").append("<option selected='selected' value='"+catlist[cati].id+"'>"+catlist[cati].name+"</option>")
 						 	 }else{
 						 		$("#category").append("<option value='"+catlist[cati].id+"'>"+catlist[cati].name+"</option>")
 						 	 }
@@ -168,17 +174,15 @@ $(function(){
 	
 	
 	//为栏目添加绑定事件
-	 $("#channel").change(function(){
+	$("#channel").change(function(){
 		 //先清空原有的栏目下的分类
 		 $("#category").empty();
 		var cid =$(this).val();//获取当前的下拉框的id
 		//根据ID 获取栏目下的分类
-	 	$.get("/article/getCatsByChn",{channelId:cid},function(list){
-		
+	 	$.get("/article/listCatByChnl",{chnlId:cid},function(obj){
+		var list = obj.data;
 		 for(var i in list){
-		  $("#category").append("<option value='"+list[i].id+"'>"+list[i].name+"</option>")
-
-
+		  	$("#category").append("<option value='"+list[i].id+"'>"+list[i].name+"</option>")
 		 }
 		 
 	 })

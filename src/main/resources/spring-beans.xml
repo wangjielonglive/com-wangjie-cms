@@ -92,5 +92,14 @@
 		<property name="basePackage" value="com.wangjie.cms.dao"></property>
 
 	</bean>
+	
+	<!-- 导入redis -->
+	<import resource="spring-redis.xml"/>
+	
+	<!-- 导入kafka -->
+	<import resource="spring-kafka-*.xml"/>
+	
+	<!-- 导入elasticsearch -->
+	<import resource="spring-es.xml"/>
 
 </beans>

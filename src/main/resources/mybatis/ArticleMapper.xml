@@ -102,4 +102,13 @@
 	<insert id="addTag" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
 		INSERT INTO cms_term(display_name) values(#{display_name})
 	</insert>
+	
+	<!-- 使用kafka导入数据 -->
+	<insert id="addFromKafka" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+		INSERT INTO cms_article(title,content,picture,channel_id,category_id,user_id,hits,hot,status,deleted,created,updated,commentCnt,articleType)
+		  values(#{title},#{content},#{picture},#{channelId},#{categoryId},#{userId},0,0,0,0,now(),now(),0,
+		    #{articleType, typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler,
+		   jdbcType=INTEGER, javaType=com.wangjie.cms.common.ArticleType})
+
+	</insert>
 </mapper>

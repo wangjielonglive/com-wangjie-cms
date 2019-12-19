@@ -54,7 +54,8 @@ public class IndexController {
 	public String index(HttpServletRequest request,
 			@RequestParam(defaultValue="0") Integer chnId,
 			@RequestParam(defaultValue="0")  Integer catId,
-			@RequestParam(defaultValue="1")  Integer page
+			@RequestParam(defaultValue="1")  Integer page,
+			String key
 			) throws Exception {
 		
 		
@@ -89,12 +90,28 @@ public class IndexController {
 			};
 		}else {
 			// 首页热门
-			// 获取热门文章
+			
 			t2=new Thread() {
-				public void run() {
-					PageInfo<Article>  articleList = articleService.hostList(page);
+				public void run() { 
+					PageInfo<Article>  articleList = null;
+					// 获取热门文章
+					if (key == null) {
+						articleList = articleService.hostList(page);
+
+					}else{
+						
+						//如果有模糊搜素的条件则查询es
+						articleList = articleService.esList(page,key);
+						
+					}
+					
 					request.setAttribute("articles", articleList);
-					PageUtils.page(request, "/index", 10, articleList.getList(),
+					String url ="/index";
+					if (key != null && !key.trim().equals("")) {
+						url +="?key="+key;
+					}
+					
+					PageUtils.page(request, url, 10, articleList.getList(),
 							(long)articleList.getTotal(), articleList.getPageNum());
 				}
 			};			
